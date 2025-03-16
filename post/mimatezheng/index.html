@@ -1,0 +1,280 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>基本密码及特点 | ✨叶落随川</title>
+
+<link rel="shortcut icon" href="https://maskcao.github.io/favicon.ico?v=1742145847217">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maskcao.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            ✨叶落随川
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1742145847217"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    基本密码及特点
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-09-05 ·
+                    </time>
+                    
+                        <a href="https://maskcao.github.io/tag/0jkEzd8PS/" class="post-tags">
+                            # 密码学
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>总结了一些基本密码的密文特征👇</p>
+<!-- more -->
+<h2 id="base16">base16</h2>
+<p>特征:base16就是16进制转ASCII问题，base16中只有数字0-9以及大写字母ABCDEF</p>
+<h2 id="base32">base32</h2>
+<p>特征:base32编码是由大写字母（A-Z）和数字234567组成与base64类似</p>
+<p>转化密文：MZWGCZZRGIZQ====</p>
+<h2 id="base64">base64</h2>
+<p>特征：base64是由大写字母（A-Z），小写字母（a-z），数字（0-9）以及+/组成</p>
+<p>如果字符不足则会用“=”补齐，特征很明显。</p>
+<p>转化密文：ZmxhZzEyMw==</p>
+<h2 id="base36">base36</h2>
+<p>特征：密文由36个字符（0-9，a-z）组成加密仅支持整数数字，解密仅支持字符串，不支持中文。</p>
+<h2 id="base58">base58</h2>
+<p>特征：base58是用于Bitcoin中使用的一种独特的编码方式。主要用于产生Bitcoin的钱包地址，bsae58不使用数字0,大写字母O，大写字母I,小写字母l,已及'+'，'/'。</p>
+<h2 id="base62">base62</h2>
+<p>特征：密文由62字符（0-9，a-z,A-Z)组成</p>
+<h2 id="base91">base91</h2>
+<p>特征：密文由91个字符（0-9，a-z，A-Z，!#$%&amp; ()*+,./:;&lt;=&gt;?@ []^_` {|}”）</p>
+<h2 id="base92">base92</h2>
+<p>特征：密文由91个字符（0-9，a-z，A-Z，!#$%&amp; ()*+,./:;&lt;=&gt;?@ []^_` {|}~”） 比base91多了一个&quot;~&quot;</p>
+<h2 id="凯撒密码">凯撒密码</h2>
+<p>特征：它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。只位移字母。</p>
+<h2 id="维吉尼亚密码">维吉尼亚密码</h2>
+<p>维吉尼亚密码是一种简单的多表代换密码(由26个类似的Caesar密码的代换表组成)，即由一些偏移量不同的恺撒密码组成，这些代换在一起组成了密钥。</p>
+<h2 id="rot5">ROT5</h2>
+<p>特征：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字。</p>
+<h2 id="rot13">ROT13</h2>
+<p>特征：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母。</p>
+<h2 id="rot18">ROT18</h2>
+<p>特征：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。</p>
+<h2 id="rot47">ROT47</h2>
+<p>特征：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符。</p>
+<h2 id="摩斯密码">摩斯密码</h2>
+<p>特征：一般出现形式为“.”和“-”或者为0和1</p>
+<p>转化密文：…-. .-… .- --. .---- …—…–</p>
+<h2 id="url转码">URL转码</h2>
+<p>特征：常出现%</p>
+<h2 id="栅栏密码">栅栏密码</h2>
+<p>特征：题目会给你特别明显的提示如：栅栏，几(明确的数字)只等</p>
+<h2 id="培根加密">培根加密</h2>
+<p>特征：一串字符里全是A和B，并且5个一组。培根加密只能加密字母。<br>
+转化密文：flag ==&gt;AABAB ABABB AAAAA AABBA</p>
+<h2 id="jother编码">jother编码</h2>
+<p>特征：在javascript语言中，利用少量特定字符构造精简的匿名函数对与字符串的编码方式.代码中大量出现“+”、“！”、“（”、“）”、“[”、“]”、“{”、“}&quot;字符。</p>
+<p>转化密文:!![]+!![]+!![]+!![]+!![]+!![]<br>
+（用控制台，enter解密）</p>
+<h2 id="unicode编码">unicode编码</h2>
+<p>特征：Unicode码扩展自ASCII字元集,使用全16位元字元集。Unicode目前普遍采用的是UCS-2,它用两个字节来编码一个字符,字符编码一般用十六进制来表示。</p>
+<p>转化密文:\u4e16\u754c\u4f60\u597d<br>
+转换明文：hello world</p>
+<h2 id="html编码">HTML编码</h2>
+<p>特征：HTML代表超文本标记语言</p>
+<h2 id="ook编码">ook编码</h2>
+<p>特征：ook密码中有大量ook，加上一些符号</p>
+<h2 id="aes加密">Aes加密</h2>
+<p>特征： 一般AES的密钥长度是128bit 或 256bit，加密出来的数据是128或256的整倍数。 一般情况下密钥都是16字节</p>
+<h2 id="brianfuck">brianfuck</h2>
+<p>特征：</p>
+<p>转化密文：+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;</p>
+<h2 id="rabbit加密">Rabbit加密</h2>
+<p>特征：26个大小写英文字母，+，/，=组成。以U2FsdGVkX1开头。可能以=结尾。</p>
+<h2 id="qwe加密">QWE加密</h2>
+<p>特征： 从电脑键盘上的字母从Q开始数，顺序是Q W E R T Y U I。。。对应的字母顺序依次是A B C D E F G H 也就是说Q=A,W=B,E=C，依次类推。</p>
+<h2 id="核心价值观编码">核心价值观编码</h2>
+<p>特征：富强民主文明和谐自由平等公正法治爱国敬业诚信友善<br>
+转化密文：公正公正公正诚信文明公正民主公正法治法治友善平等和谐敬业和谐富强和谐富强和谐文</p>
+<h2 id="rsa-加解密">RSA 加解密</h2>
+<p>特征：给一些 RSA 算法的参数，然后加密\解密消息获取 flag。</p>
+<h2 id="仿射密码-affine-cipher">仿射密码 affine cipher</h2>
+<p>特征：可能会提示你是放射密码 affine，公式： y = k * x + b mod 26 （跟一元一次函数似的）<br>
+后面的取模，如果都是英文字母的话是26，不排除有其他形式，比如ASC II 什么的，取模可能会换。</p>
+<h2 id="进制转换">进制转换</h2>
+<p>特征：二进制 b开头，八进制 o开头，十进制 d开头，十六进制 x开头</p>
+<h2 id="xxencode编码">xxencode编码</h2>
+<p>特征：原理与base64大致相同。组成与base64相比多了'+'，少了'/'，而且补全符号为'+'</p>
+<h2 id="uuendode编码">uuendode编码</h2>
+<p>特征：特殊符号很多。</p>
+<h2 id="jjencode">jjencode</h2>
+<p>特征：将JS代码转换成只有符号的字符串。（可能有💲，￥）</p>
+<h2 id="aaencode">aaencode</h2>
+<p>特征：将JS代码转换成常用的网络表情</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://maskcao.github.io/post/hash/" class="post-title gt-a-link">
+                    密码学中的哈希函数
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'PsVRAoBuVdVZuCM0OnYw0BgI-9Nh9j0Va',
+		appKey: '7pL8p8TaRNzpwanAvqncIvWj',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: '来都来了，留个言再走吧！',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://maskcao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

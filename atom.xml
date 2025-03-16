@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://maskcao.github.io</id>
+    <title>✨叶落随川</title>
+    <updated>2025-03-16T17:24:39.308Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://maskcao.github.io"/>
+    <link rel="self" href="https://maskcao.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://maskcao.github.io/images/avatar.png</logo>
+    <icon>https://maskcao.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2025, ✨叶落随川</rights>
+    <entry>
+        <title type="html"><![CDATA[使用 wxappUnpacker 工具进行 MAC 微信小程序反编译]]></title>
+        <id>https://maskcao.github.io/post/wxappunpacker/</id>
+        <link href="https://maskcao.github.io/post/wxappunpacker/">
+        </link>
+        <updated>2024-07-26T15:40:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>😀记录下mac上面小程序反编译的方法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>😀记录下mac上面小程序反编译的方法</p>
+<!-- more -->
+<h1 id="配置反编译环境">配置反编译环境</h1>
+<ol>
+<li>
+<p>首先需要配置好你的 node 环境：官网下载或者 brew 安装都行。</p>
+</li>
+<li>
+<p>然后下载 wxappUnpacker 工具：<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fsystem-cpu%2FwxappUnpacker">github.com/system-cpu/…</a></p>
+</li>
+<li>
+<p>cd 进入下载的文件夹，安装必须的模块</p>
+</li>
+</ol>
+<pre><code>npm install
+npm install esprima
+npm install css-tree
+npm install cssbeautify
+npm install vm2
+npm install uglify-es
+npm install js-beautify
+</code></pre>
+<ol start="4">
+<li>寻找小程序代码</li>
+</ol>
+<p>在 MAC 系统，可以进入到</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">/</mi><mi>U</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>s</mi><mi mathvariant="normal">/</mi><mrow><mi mathvariant="normal">你</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">户</mi><mi mathvariant="normal">名</mi></mrow><mi mathvariant="normal">/</mi><mi>L</mi><mi>i</mi><mi>b</mi><mi>r</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">/</mi><mi>C</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>r</mi><mi>s</mi><mi mathvariant="normal">/</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi mathvariant="normal">.</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>x</mi><mi>i</mi><mi>n</mi><mi>W</mi><mi>e</mi><mi>C</mi><mi>h</mi><mi>a</mi><mi>t</mi><mi mathvariant="normal">/</mi><mi>D</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">.</mi><mi>w</mi><mi>x</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi>l</mi><mi>e</mi><mi>t</mi><mi mathvariant="normal">/</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>s</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">/Users/{你的用户名}/Library/Containers/com.tencent.xinWeChat/Data/.wxapplet/packages/
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mord">/</span><span class="mord"><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">户</span><span class="mord cjk_fallback">名</span></span><span class="mord">/</span><span class="mord mathdefault">L</span><span class="mord mathdefault">i</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mord">/</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord">.</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mord mathdefault">x</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord">/</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">x</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord">/</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord">/</span></span></span></span></span></p>
+<p>​		这个文件夹下面，这里面就是存放的你的电脑近期已经打开过的小程序了。你需要提前打开小程序，并且最好把大多数功能都打开一遍，这样不至于漏掉一些资源没有下载下来。</p>
+<p>​		那具体是哪一个呢？这个时候就需要掏出手机了，在手机上打开你需要反编译的小程序，然后点击右上角的三个点，然后点击小程序名，然后点击更多资料，然后就可以看到小程序的详细信息了，这里就能看到小程序的 APPID 了。</p>
+<p>​		这样我们就可以进入到 APPID 对应的文件夹，看到一个名为 <strong><strong>APP</strong></strong>.wxapkg 的文件了，这里就是微信小程序的代码。</p>
+<h1 id="反编译">反编译</h1>
+<p>直接一行命令就行了，bash 代码解读复制代码：</p>
+<pre><code>node wuWxapkg.js __APP__.wxapkg
+</code></pre>
+<p>这个时候你就能在  <strong><strong>APP</strong></strong>.wxapkg  这个文件所在的文件夹生成反编译后的小程序的代码了。</p>
+<h1 id="审计">审计</h1>
+<p>接下来使用你熟悉的 JS IDE 审计代码就行了，我这里使用微信开发者工具，官网下载即可。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[基本密码及特点]]></title>
+        <id>https://maskcao.github.io/post/mimatezheng/</id>
+        <link href="https://maskcao.github.io/post/mimatezheng/">
+        </link>
+        <updated>2023-09-05T07:59:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>总结了一些基本密码的密文特征👇</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>总结了一些基本密码的密文特征👇</p>
+<!-- more -->
+<h2 id="base16">base16</h2>
+<p>特征:base16就是16进制转ASCII问题，base16中只有数字0-9以及大写字母ABCDEF</p>
+<h2 id="base32">base32</h2>
+<p>特征:base32编码是由大写字母（A-Z）和数字234567组成与base64类似</p>
+<p>转化密文：MZWGCZZRGIZQ====</p>
+<h2 id="base64">base64</h2>
+<p>特征：base64是由大写字母（A-Z），小写字母（a-z），数字（0-9）以及+/组成</p>
+<p>如果字符不足则会用“=”补齐，特征很明显。</p>
+<p>转化密文：ZmxhZzEyMw==</p>
+<h2 id="base36">base36</h2>
+<p>特征：密文由36个字符（0-9，a-z）组成加密仅支持整数数字，解密仅支持字符串，不支持中文。</p>
+<h2 id="base58">base58</h2>
+<p>特征：base58是用于Bitcoin中使用的一种独特的编码方式。主要用于产生Bitcoin的钱包地址，bsae58不使用数字0,大写字母O，大写字母I,小写字母l,已及'+'，'/'。</p>
+<h2 id="base62">base62</h2>
+<p>特征：密文由62字符（0-9，a-z,A-Z)组成</p>
+<h2 id="base91">base91</h2>
+<p>特征：密文由91个字符（0-9，a-z，A-Z，!#$%&amp; ()*+,./:;&lt;=&gt;?@ []^_` {|}”）</p>
+<h2 id="base92">base92</h2>
+<p>特征：密文由91个字符（0-9，a-z，A-Z，!#$%&amp; ()*+,./:;&lt;=&gt;?@ []^_` {|}~”） 比base91多了一个&quot;~&quot;</p>
+<h2 id="凯撒密码">凯撒密码</h2>
+<p>特征：它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。只位移字母。</p>
+<h2 id="维吉尼亚密码">维吉尼亚密码</h2>
+<p>维吉尼亚密码是一种简单的多表代换密码(由26个类似的Caesar密码的代换表组成)，即由一些偏移量不同的恺撒密码组成，这些代换在一起组成了密钥。</p>
+<h2 id="rot5">ROT5</h2>
+<p>特征：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字。</p>
+<h2 id="rot13">ROT13</h2>
+<p>特征：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母。</p>
+<h2 id="rot18">ROT18</h2>
+<p>特征：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。</p>
+<h2 id="rot47">ROT47</h2>
+<p>特征：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符。</p>
+<h2 id="摩斯密码">摩斯密码</h2>
+<p>特征：一般出现形式为“.”和“-”或者为0和1</p>
+<p>转化密文：…-. .-… .- --. .---- …—…–</p>
+<h2 id="url转码">URL转码</h2>
+<p>特征：常出现%</p>
+<h2 id="栅栏密码">栅栏密码</h2>
+<p>特征：题目会给你特别明显的提示如：栅栏，几(明确的数字)只等</p>
+<h2 id="培根加密">培根加密</h2>
+<p>特征：一串字符里全是A和B，并且5个一组。培根加密只能加密字母。<br>
+转化密文：flag ==&gt;AABAB ABABB AAAAA AABBA</p>
+<h2 id="jother编码">jother编码</h2>
+<p>特征：在javascript语言中，利用少量特定字符构造精简的匿名函数对与字符串的编码方式.代码中大量出现“+”、“！”、“（”、“）”、“[”、“]”、“{”、“}&quot;字符。</p>
+<p>转化密文:!![]+!![]+!![]+!![]+!![]+!![]<br>
+（用控制台，enter解密）</p>
+<h2 id="unicode编码">unicode编码</h2>
+<p>特征：Unicode码扩展自ASCII字元集,使用全16位元字元集。Unicode目前普遍采用的是UCS-2,它用两个字节来编码一个字符,字符编码一般用十六进制来表示。</p>
+<p>转化密文:\u4e16\u754c\u4f60\u597d<br>
+转换明文：hello world</p>
+<h2 id="html编码">HTML编码</h2>
+<p>特征：HTML代表超文本标记语言</p>
+<h2 id="ook编码">ook编码</h2>
+<p>特征：ook密码中有大量ook，加上一些符号</p>
+<h2 id="aes加密">Aes加密</h2>
+<p>特征： 一般AES的密钥长度是128bit 或 256bit，加密出来的数据是128或256的整倍数。 一般情况下密钥都是16字节</p>
+<h2 id="brianfuck">brianfuck</h2>
+<p>特征：</p>
+<p>转化密文：+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;</p>
+<h2 id="rabbit加密">Rabbit加密</h2>
+<p>特征：26个大小写英文字母，+，/，=组成。以U2FsdGVkX1开头。可能以=结尾。</p>
+<h2 id="qwe加密">QWE加密</h2>
+<p>特征： 从电脑键盘上的字母从Q开始数，顺序是Q W E R T Y U I。。。对应的字母顺序依次是A B C D E F G H 也就是说Q=A,W=B,E=C，依次类推。</p>
+<h2 id="核心价值观编码">核心价值观编码</h2>
+<p>特征：富强民主文明和谐自由平等公正法治爱国敬业诚信友善<br>
+转化密文：公正公正公正诚信文明公正民主公正法治法治友善平等和谐敬业和谐富强和谐富强和谐文</p>
+<h2 id="rsa-加解密">RSA 加解密</h2>
+<p>特征：给一些 RSA 算法的参数，然后加密\解密消息获取 flag。</p>
+<h2 id="仿射密码-affine-cipher">仿射密码 affine cipher</h2>
+<p>特征：可能会提示你是放射密码 affine，公式： y = k * x + b mod 26 （跟一元一次函数似的）<br>
+后面的取模，如果都是英文字母的话是26，不排除有其他形式，比如ASC II 什么的，取模可能会换。</p>
+<h2 id="进制转换">进制转换</h2>
+<p>特征：二进制 b开头，八进制 o开头，十进制 d开头，十六进制 x开头</p>
+<h2 id="xxencode编码">xxencode编码</h2>
+<p>特征：原理与base64大致相同。组成与base64相比多了'+'，少了'/'，而且补全符号为'+'</p>
+<h2 id="uuendode编码">uuendode编码</h2>
+<p>特征：特殊符号很多。</p>
+<h2 id="jjencode">jjencode</h2>
+<p>特征：将JS代码转换成只有符号的字符串。（可能有💲，￥）</p>
+<h2 id="aaencode">aaencode</h2>
+<p>特征：将JS代码转换成常用的网络表情</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[密码学中的哈希函数]]></title>
+        <id>https://maskcao.github.io/post/hash/</id>
+        <link href="https://maskcao.github.io/post/hash/">
+        </link>
+        <updated>2023-07-07T06:40:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>😊学习区块链，了解下密码学中的哈希函数。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>😊学习区块链，了解下密码学中的哈希函数。</p>
+<!-- more -->
+<h1 id="密码学中的哈希函数的三个性质">密码学中的哈希函数的三个性质</h1>
+<h2 id="1-collision-resistance">1. Collision resistance</h2>
+<p>抵抗哈希碰撞的性质，即能将人为制造哈希碰撞的效率降至非常低下，或者说不可能发生有效的人为制造哈希碰撞的性质。</p>
+<h3 id="理解">理解</h3>
+<p>a：这个算法无法被证明。<br>
+只可以在长时间的实践中证实。因为源文件可以是真正意义上的无数种，而哈希之后得到的哈希值一定会有穷尽。所以单纯的数学方法无法证明<br>
+b：这个算法不一定一直有效:。<br>
+比如说以前使用的MD5就被视为有这个性质，但是通过数学方法证明了可以人为操作制造哈希碰撞，所以现在MD5被剔除了这个性质。比特币中采用的为<strong>SHA-256</strong>（Secure Hash Algorithm）。</p>
+<h3 id="作用">作用</h3>
+<p>用来检测消息是否经过篡改。如果对源文件进行改动，那么它的哈希值一定会发生不可预知的变化，只要与之前的哈希值进行对比就会发现消息是否存在异常。同时，因为哈希过程不可预知的特性，我们无法做到修改完的部分的哈希值和原来一定相同。绝大概率和以前的哈希值结果相去甚远。</p>
+<h2 id="2-hiding">2. hiding</h2>
+<h3 id="理解-2">理解</h3>
+<p>X本身的取值范围一定要大且平均。要不然通过简单地穷举就可以得到哈希值进行比对，哈希的存在的意义就被削弱了。</p>
+<h3 id="作用-2">作用</h3>
+<p>不可逆的计算使得H（x）可以作为数据进行公布而其中的X不会被人得知。适用于不能提前公开的某种结果X，可以提前公布H（X），同时由于上面的collision特性可知X不可修改。具体应用一般和其他特性联用（Collision resistence）。</p>
+<h2 id="3-puzzle-friendly">3. puzzle friendly</h2>
+<p>要得到一个想要的哈希值，就必须需要很大的重复工作来计算出所需要的哈希值。</p>
+<h3 id="理解-3">理解</h3>
+<p>a：挖矿的过程本身就是再求一个特定区域内的哈希值，而这个特性的存在使得工作量证明机制更加好用。<br>
+b：挖矿本身的计算量非常高，但是进行验证的却十分简单，只需要计算一次X的哈希值看其是否符合条件即可。</p>
+<h3 id="作用-3">作用</h3>
+<p>增强pow（proof of work 工作量证明），简化验证。</p>
+<h1 id="非对称加密算法">非对称加密算法</h1>
+<p>非对称加密即加密和解密在同一种算法当中不可逆，非对称加密的信息传递当中的工作原理：<br>
+1、A要向B发送信息，A和B都要产生一对用于加密和解密的公钥和私钥。<br>
+2、A的私钥保密，A的公钥告诉B；B的私钥保密，B的公钥告诉A。<br>
+3、A要给B发送信息时，A用B的公钥加密信息，因为A知道B的公钥。<br>
+4、A将这个消息发给B（已经用B的公钥加密消息）。<br>
+5、B收到这个消息后，B用自己的私钥解密A的消息。其他所有收到这个报文的人都无法解密，因为只有B才有B的私钥。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Burp Suite的安装与破解教程]]></title>
+        <id>https://maskcao.github.io/post/bp/</id>
+        <link href="https://maskcao.github.io/post/bp/">
+        </link>
+        <updated>2023-05-23T03:30:56.000Z</updated>
+        <summary type="html"><![CDATA[<p>💪教你快速学会对正版Burp Suite的安装与破解！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>💪教你快速学会对正版Burp Suite的安装与破解！</p>
+<!-- more -->
+<h1 id="应用场景">应用场景</h1>
+<p>Burp Suite是一个集成了系列渗透测试组件的渗透测试工具，使我们自动化地或手工地能完成对web应用的渗透测试和攻击。在渗透测试中，使用Burp Suite将使得测试工作变得更加高效率，及时我们对一些攻击手段不熟，只要我们熟悉Burp Suite的使用，也使得渗透测试工作变得轻松和高效</p>
+<h1 id="使用须知">使用须知</h1>
+<ul>
+<li>免费版(burp suite Free ) 和专业版 (burp suite Profrssional) 的差别就在于前者没有主动扫描的功能，其他差别不大。</li>
+<li>请勿使用该工具从事违法犯罪行为。</li>
+</ul>
+<h1 id="配置步骤">配置步骤</h1>
+<h2 id="ajdk安装与环境变量配置">（a）JDK安装与环境变量配置</h2>
+<p>环境变量配置请参考文章 :   <a href="https://config.net.cn/ide/programide/b852ad58-27ef-4d7a-97bd-9049dde2f2ba-p1.html">Window上Java环境变量的原理,配置与检测(含Oracle Jdk与 OpenJdk下载</a></p>
+<h2 id="b下载burp-suite">（b）下载Burp Suite</h2>
+<ul>
+<li>打开  https://portswigger.net/burp/releases</li>
+<li>找到Burp Suite对应版本，可以选择最新版</li>
+<li>版本选择：Burp Suite Professional ,  格式下拉选选择jar下载</li>
+</ul>
+<h2 id="c打开jar包">（c）打开jar包</h2>
+<p>系统里安装了java环境的话，如果双击不能打开，可以新建一个<code>burpsuit.bat文件</code>，将<code>javaw -jar %1</code>填进去并保存。然后右键jar包，选择打开方式，选中<code>burpsuit.bat</code>，然后勾选始终使用此应用打开。这样就能双击打开jar包了！</p>
+<h2 id="d注册机注册">（d）注册机注册</h2>
+<p>注册机文件下载请前往国内大神提供的地址： <code>https://github.com/h3110w0r1d-y/BurpLoaderKeygen/releases</code>。启动BurpLoaderKeygen后，在 Loader Command这一行点击最后的【Run】运行BurpSuite，然后按照下面步骤激活就可以了。<br>
+<a href="https://imgse.com/i/p9TAWSs"><img src="https://s1.ax1x.com/2023/05/23/p9TAWSs.md.png" alt="p9TAWSs.md.png" loading="lazy"></a><br>
+<a href="https://imgse.com/i/p9TAgYQ"><img src="https://s1.ax1x.com/2023/05/23/p9TAgYQ.png" alt="p9TAgYQ.png" loading="lazy"></a><br>
+<a href="https://imgse.com/i/p9TA2Wj"><img src="https://s1.ax1x.com/2023/05/23/p9TA2Wj.md.png" alt="p9TA2Wj.md.png" loading="lazy"></a><br>
+<a href="https://imgse.com/i/p9TAfln"><img src="https://s1.ax1x.com/2023/05/23/p9TAfln.md.png" alt="p9TAfln.md.png" loading="lazy"></a></p>
+<h2 id="e注册后启动burp-suite">（e）注册后启动Burp Suite</h2>
+<p>使用vbs脚本，能够既不打开命令行，又能打开Burp Suit，创建<code>burpsuit.vbs</code>，填入下面内容并保存：</p>
+<pre><code>DIM objShell
+DIM command
+set objShell=wscript.createObject(&quot;wscript.shell&quot;)`
+command=&quot;java  -jar BurpLoaderKeygen.jar&quot;
+iReturn=objShell.Run(command, 0, TRUE)
+</code></pre>
+<p>之后，每次都双击vbs文件即可打开Burp Suit。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gridea同步github失败最终解决方案]]></title>
+        <id>https://maskcao.github.io/post/gridea/</id>
+        <link href="https://maskcao.github.io/post/gridea/">
+        </link>
+        <updated>2023-04-20T03:35:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏这篇文章能够解决你利用Gridea把博客部署在Github Pages上面同步失败的问题！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏这篇文章能够解决你利用Gridea把博客部署在Github Pages上面同步失败的问题！</p>
+<!-- more -->
+<p>在Gridea上面写好文章之后，因为我是部署到Github Pages上面的，因为Github的服务器在国外，所以同步起来很慢，甚至老是同步失败！当然，如果你部署到Gitee Pages上面应该不会出现这个问题。</p>
+<p>我在网上搜了很多，如果你不会科学上网的话（我寻思着都搭建自己的博客了，应该会科学上网吧），可能需要借助类似<strong>Proxifier</strong>（虽然软件收费，但你可以试着去搜一搜，懂得都懂）的软件来给Gridea这个软件设置系统级别的代理（使用梯子开全局代理是没用的），具体去看这篇文章：<a href="https://www.luoyelusheng.com/post/Gridea%E5%90%8C%E6%AD%A5github%E5%A4%B1%E8%B4%A5%E6%9C%80%E7%BB%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决办法</a>。</p>
+<p>下面我要介绍的就是在你能够科学上网的情况下解决这个问题的的办法！在Gridea软件的远程那里，进入基础配置，有个设置HTTP代理。<br>
+<img src="https://maskcao.github.io/post-images/1682084214437.png" alt="" loading="lazy"><br>
+根据你的VPN填写代理，然后你每次同步的时候就会很顺利，而且很丝滑，最终会看到这个，就很舒服！<br>
+<img src="https://maskcao.github.io/post-images/1682084538417.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://maskcao.github.io/post/hello-gridea/</id>
+        <link href="https://maskcao.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

@@ -1,0 +1,229 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>密码学中的哈希函数 | ✨叶落随川</title>
+
+<link rel="shortcut icon" href="https://maskcao.github.io/favicon.ico?v=1742145847217">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maskcao.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            ✨叶落随川
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1742145847217"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    密码学中的哈希函数
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-07 ·
+                    </time>
+                    
+                        <a href="https://maskcao.github.io/tag/0jkEzd8PS/" class="post-tags">
+                            # 密码学
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>😊学习区块链，了解下密码学中的哈希函数。</p>
+<!-- more -->
+<h1 id="密码学中的哈希函数的三个性质">密码学中的哈希函数的三个性质</h1>
+<h2 id="1-collision-resistance">1. Collision resistance</h2>
+<p>抵抗哈希碰撞的性质，即能将人为制造哈希碰撞的效率降至非常低下，或者说不可能发生有效的人为制造哈希碰撞的性质。</p>
+<h3 id="理解">理解</h3>
+<p>a：这个算法无法被证明。<br>
+只可以在长时间的实践中证实。因为源文件可以是真正意义上的无数种，而哈希之后得到的哈希值一定会有穷尽。所以单纯的数学方法无法证明<br>
+b：这个算法不一定一直有效:。<br>
+比如说以前使用的MD5就被视为有这个性质，但是通过数学方法证明了可以人为操作制造哈希碰撞，所以现在MD5被剔除了这个性质。比特币中采用的为<strong>SHA-256</strong>（Secure Hash Algorithm）。</p>
+<h3 id="作用">作用</h3>
+<p>用来检测消息是否经过篡改。如果对源文件进行改动，那么它的哈希值一定会发生不可预知的变化，只要与之前的哈希值进行对比就会发现消息是否存在异常。同时，因为哈希过程不可预知的特性，我们无法做到修改完的部分的哈希值和原来一定相同。绝大概率和以前的哈希值结果相去甚远。</p>
+<h2 id="2-hiding">2. hiding</h2>
+<h3 id="理解-2">理解</h3>
+<p>X本身的取值范围一定要大且平均。要不然通过简单地穷举就可以得到哈希值进行比对，哈希的存在的意义就被削弱了。</p>
+<h3 id="作用-2">作用</h3>
+<p>不可逆的计算使得H（x）可以作为数据进行公布而其中的X不会被人得知。适用于不能提前公开的某种结果X，可以提前公布H（X），同时由于上面的collision特性可知X不可修改。具体应用一般和其他特性联用（Collision resistence）。</p>
+<h2 id="3-puzzle-friendly">3. puzzle friendly</h2>
+<p>要得到一个想要的哈希值，就必须需要很大的重复工作来计算出所需要的哈希值。</p>
+<h3 id="理解-3">理解</h3>
+<p>a：挖矿的过程本身就是再求一个特定区域内的哈希值，而这个特性的存在使得工作量证明机制更加好用。<br>
+b：挖矿本身的计算量非常高，但是进行验证的却十分简单，只需要计算一次X的哈希值看其是否符合条件即可。</p>
+<h3 id="作用-3">作用</h3>
+<p>增强pow（proof of work 工作量证明），简化验证。</p>
+<h1 id="非对称加密算法">非对称加密算法</h1>
+<p>非对称加密即加密和解密在同一种算法当中不可逆，非对称加密的信息传递当中的工作原理：<br>
+1、A要向B发送信息，A和B都要产生一对用于加密和解密的公钥和私钥。<br>
+2、A的私钥保密，A的公钥告诉B；B的私钥保密，B的公钥告诉A。<br>
+3、A要给B发送信息时，A用B的公钥加密信息，因为A知道B的公钥。<br>
+4、A将这个消息发给B（已经用B的公钥加密消息）。<br>
+5、B收到这个消息后，B用自己的私钥解密A的消息。其他所有收到这个报文的人都无法解密，因为只有B才有B的私钥。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://maskcao.github.io/post/bp/" class="post-title gt-a-link">
+                    Burp Suite的安装与破解教程
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'PsVRAoBuVdVZuCM0OnYw0BgI-9Nh9j0Va',
+		appKey: '7pL8p8TaRNzpwanAvqncIvWj',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: '来都来了，留个言再走吧！',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://maskcao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
