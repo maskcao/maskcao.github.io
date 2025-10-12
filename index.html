@@ -1,315 +1,241 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>✨叶落随川</title>
-
-<link rel="shortcut icon" href="https://maskcao.github.io/favicon.ico?v=1742145847217">
-
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maskcao.github.io/styles/main.css">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
-
-
-
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            ✨叶落随川
-        </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-            <div class="nav-item">
-                
-                <a href="/" class="menu gt-a-link">
-                    首页
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/archives" class="menu gt-a-link">
-                    归档
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/tags" class="menu gt-a-link">
-                    标签
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/post/about" class="menu gt-a-link">
-                    关于
-                </a>
-                
-            </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1742145847217"
-                action="/search/">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
-    </div>
-</nav>
-<script>
-    /* 移动端导航栏展开/收起切换 */
-    document.getElementById('changeNavbar').onclick = () => {
-        var element = document.getElementById('navbarSupportedContent');
-        if (element.style.display === 'none' || element.style.display === '') {
-            element.style.display = 'block';
-        } else {
-            element.style.display = 'none';
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>茂茂 | maomao1996 | 个人笔记</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="茂茂的个人主页" />
+    <meta name="keywords" content="茂茂,maomao1996" />
+    <meta name="author" content="茂茂,maomao1996" />
+    <meta name="copyright" content="茂茂,maomao1996" />
+    <meta name="baidu-site-verification" content="codeva-VvOS2oncqz" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <style>
+      html,
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
+      body {
+        font-family: 'Open Sans', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial,
+          sans-serif;
+        color: #333;
+        user-select: none;
+      }
+      #wrapper {
+        position: absolute;
+        top: 38.2%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .logo:hover {
+        transform: rotate(666turn);
+        transition: transform 59s 1s cubic-bezier(0.3, 0, 0.8, 1);
+      }
+      h1 {
+        margin: 1rem 0;
+        font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: 9px;
+        text-transform: uppercase;
+      }
+      h2 {
+        margin: 1rem 0;
+        color: #666;
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: 0.12em;
+      }
+      a {
+        color: #999;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      a:hover {
+        opacity: 0.8;
+      }
+      .copyright {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .copyright a {
+        color: #337ab7;
+      }
+      .copyright a:hover {
+        text-decoration: underline;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .adsbygoogle {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+      @media (max-width: 992px) {
+        .adsbygoogle {
+          top: 0;
+          bottom: initial;
         }
-    }
-</script>
-
-
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/wxappunpacker/">
-                            <span class="post-title gt-c-content-color-first">使用 wxappUnpacker 工具进行 MAC 微信小程序反编译</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        😀记录下mac上面小程序反编译的方法
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2024-07-26 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/syBXH9sDs/" class="post-tag">
-                                # 小程序
-                            </a>
-                        
-                            <a href="https://maskcao.github.io/tag/RAKLWJSCj/" class="post-tag">
-                                # 安全工具
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/mimatezheng/">
-                            <span class="post-title gt-c-content-color-first">基本密码及特点</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        总结了一些基本密码的密文特征👇
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2023-09-05 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/0jkEzd8PS/" class="post-tag">
-                                # 密码学
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/hash/">
-                            <span class="post-title gt-c-content-color-first">密码学中的哈希函数</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        😊学习区块链，了解下密码学中的哈希函数。
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2023-07-07 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/0jkEzd8PS/" class="post-tag">
-                                # 密码学
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/bp/">
-                            <span class="post-title gt-c-content-color-first">Burp Suite的安装与破解教程</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        💪教你快速学会对正版Burp Suite的安装与破解！
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2023-05-23 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/RAKLWJSCj/" class="post-tag">
-                                # 安全工具
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/gridea/">
-                            <span class="post-title gt-c-content-color-first">Gridea同步github失败最终解决方案</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        👏这篇文章能够解决你利用Gridea把博客部署在Github Pages上面同步失败的问题！
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2023-04-20 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/rlbAzmjr6/" class="post-tag">
-                                # Gridea
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://maskcao.github.io/post/gridea/" class="post-feature-image"
-                       style="background-image: url('https://maskcao.github.io/post-images/gridea.png')">
-                    </a>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://maskcao.github.io/post/hello-gridea/">
-                            <span class="post-title gt-c-content-color-first">Hello Gridea</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2018-12-12 ·
-                        </time>
-                        
-                            <a href="https://maskcao.github.io/tag/rlbAzmjr6/" class="post-tag">
-                                # Gridea
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://maskcao.github.io/post/hello-gridea/" class="post-feature-image"
-                       style="background-image: url('https://maskcao.github.io/post-images/hello-gridea.png')">
-                    </a>
-                
-            </div>
-        
+      }
+      @media (max-width: 520px) {
+        .copyright {
+          font-size: 12px;
+        }
+      }
+    </style>
+    <script>
+      var _hmt = _hmt || []
+      ;(function () {
+        var hm = document.createElement('script')
+        hm.src = 'https://hm.baidu.com/hm.js?e64dd5366e4efbbb95055cb3d26240a2'
+        var s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(hm, s)
+      })()
+    </script>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>
+      LA.init({ id: '3LNfYYTKApgTcKWt', ck: '3LNfYYTKApgTcKWt' })
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <img
+        class="logo"
+        src="https://cdn.jsdelivr.net/gh/maomao1996/picture/public/logo.png"
+        alt="logo"
+        width="150"
+      />
+      <h1>maomao1996</h1>
+      <h2>一个想躺平的小开发</h2>
+      <p>
+        <a href="https://github.com/maomao1996" target="_blank">
+          <img
+            src="https://img.shields.io/badge/GitHub-181717?logo=Github&logoColor=fff"
+            alt="Github"
+          />
+        </a>
+        <a href="https://notes.fe-mm.com" target="_blank">
+          <img
+            src="https://img.shields.io/badge/茂茂物语-4ABF8A?logo=Bloglovin&logoColor=fff"
+            alt="茂茂物语"
+          />
+        </a>
+        <a href="https://github.com/maomao1996/daily-notes" target="_blank">
+          <img
+            src="https://img.shields.io/badge/日常笔记-0D0D0D?logo=Dailymotion&logoColor=fff"
+            alt="日常笔记"
+          />
+        </a>
+        <a href="https://netease-music.fe-mm.com" target="_blank">
+          <img
+            src="https://img.shields.io/badge/mmPlayer-6666CC?logo=AppleMusic&logoColor=fff"
+            alt="mmPlayer"
+          />
+        </a>
+        <a href="https://github.com/maomao1996/tampermonkey-scripts" target="_blank">
+          <img
+            src="https://img.shields.io/badge/油猴脚本库-00485B?logo=Tampermonkey&logoColor=fff"
+            alt="油猴脚本库"
+          />
+        </a>
+        <a href="javascript:void(0)">
+          <img src="https://visitor-badge.laobi.icu/badge?page_id=fe-mm.com" alt="游客访问数" />
+        </a>
+      </p>
     </div>
-</div>
-
-        <div class="pagination-container">
-    
-    
-</div>
-
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">温故而知新</div>
-    <div class="social-container">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+    <div class="copyright">
+      Copyright ©
+      <a href="https://fe-mm.com">茂茂</a>
+      &nbsp;&nbsp;|&nbsp;&nbsp;备案号：
+      <a href="http://beian.miit.gov.cn" target="_blank">浙ICP备16027443号-2</a>
     </div>
-    <div class="footer-info">
-        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-    <div>
-        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
-                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://maskcao.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-</div>
 
-<script>
-  hljs.highlightAll()
-</script>
+    <canvas></canvas>
 
-    </div>
-</div>
+    <script>
+      document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+      })
+      var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI * 2,
+        v = m.cos,
+        z = m.random
+      c.width = w * pr
+      c.height = h * pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+      function i() {
+        x.clearRect(0, 0, w, h)
+        q = [
+          { x: 0, y: h * 0.7 + f },
+          { x: 0, y: h * 0.7 - f }
+        ]
+        while (q[1].x < w + f) d(q[0], q[1])
+      }
+      function d(i, j) {
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z() * 2 - 0.25) * f,
+          n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r -= u / -50
+        x.fillStyle =
+          '#' +
+          (
+            ((v(r) * 127 + 128) << 16) |
+            ((v(r + u / 3) * 127 + 128) << 8) |
+            (v(r + (u / 3) * 2) * 127 + 128)
+          ).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = { x: k, y: n }
+      }
+      function y(p) {
+        var t = p + (z() * 2 - 1.1) * f
+        return t > h || t < 0 ? y(p) : t
+      }
+      document.onclick = i
+      document.ontouchstart = i
+      i()
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- fe-mm -->
+    <ins
+      class="adsbygoogle"
+      style="display: inline-block; width: 250px; height: 100px"
+      data-ad-client="ca-pub-6846038091720568"
+      data-ad-slot="3296440503"
+    ></ins>
+    <script>
+      ;(adsbygoogle = window.adsbygoogle || []).push({})
+    </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"0050ac23d38940c3a820526b79e9e6bd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
